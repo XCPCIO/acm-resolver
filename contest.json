@@ -1,5 +1,7 @@
 {
+   "contest_name": "The 2015 ACM-ICPC Asia Beijing Regional Contest",
    "problem_count":20,
+   "frozen_seconds": 7200,
    "solutions":{
       "499293":{
          "user_id":"1",

@@ -1,8 +1,8 @@
-function Resolver(solutions, users, problem_count){
+function Resolver(solutions, users, problem_count, frozen_seconds){
 	this.solutions = solutions;
 	this.users = users;
 	this.problem_count = problem_count;
-	this.frozen_seconds = 3600*2;
+	this.frozen_seconds = frozen_seconds;
 	this.operations = [];
 }
 
