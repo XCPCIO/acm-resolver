@@ -296,12 +296,15 @@ function clear_cache() {
     }
 }
 
-function main() {
+function load_data() {
 
     if (confirm('确定要加载数据吗？')) {
         var data = JSON.parse($('#input-data').val());
         
-        $('title').text(data.contest_name)
+        $('title').text(data.contest_name);
+        $('#title').text(data.contest_name);
+
+        $('.footer').css("display", "none");
             
         var resolver = new Resolver(data.solutions, data.users, data.problem_count, data.frozen_seconds);
         window.resolver = resolver;
