@@ -221,8 +221,8 @@ function vuejs() {
         else if(st == 'failed')
             return problem.old_submissions;
         else 
-            return 'untouched';
-        // todo
+            return String.fromCharCode("A".charCodeAt(0) + problem.problem_index);
+        // TODO:
     });
 
     Vue.config.debug = true;

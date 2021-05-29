@@ -29,6 +29,7 @@ Resolver.prototype.calcOperations = function() {
 			this.rank[sol.user_id].problem = {};
 			for(var i = 1; i <= this.problem_count; i++) {
 				this.rank[sol.user_id].problem[i] = {
+					'problem_index': i - 1,
 					'old_penalty':0,
 					'new_penalty':0,
 					'old_verdict':'NA',
