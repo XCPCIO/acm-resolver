@@ -8,7 +8,6 @@ acm-resover
 ![screenshot](screenshots/shot1.gif)
 
 # 使用教程
-------------------------
 
 ## 1. 准备数据
 
