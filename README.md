@@ -78,7 +78,7 @@ function Resolver(solutions, users, problem_count){
 
 ## 2. 搭建服务器
 
-1. 网页必须以HTTP协议访问，准备一个HTTP服务器，Windows推荐用WAMP，MacOS推荐用MAMP。
+1. 网页必须以HTTP协议访问，准备一个HTTP服务器，推荐用Apache Web Server, Windows装个[WAMP](https://www.wampserver.com/en/)就有了，MacOS装个[MAMP](https://www.mamp.info/en/mamp/mac/)。
 2. 把整个工程文件拷贝到服务器的目录下，在浏览器中访问`index.html`即可。
 
 ## 3. 操作说明
