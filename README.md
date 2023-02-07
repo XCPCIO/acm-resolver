@@ -62,17 +62,27 @@ user的格式，其中key即为user的id，要和solution中对上：
 },
 ```
 
+## 2. 配置封榜时间
+
+封榜的时间默认是3600\*2s（距离比赛开始2小时，用的是一个热身赛的数据，整场比赛只有3小时），在`hiho-resolver.js` 最开头修改
+
+```javascript
+function Resolver(solutions, users, problem_count){
+	this.solutions = solutions;
+	this.users = users;
+	this.problem_count = problem_count;
+	this.frozen_seconds = 3600*2; // HERE!
+	this.operations = [];
+}
+```
+
 ## 2. 搭建服务器
 
-1. 网页必须以http协议访问，准备一个web服务器，Windows推荐用WAMP，MacOS推荐用MAMP。
-2. 把整个工程文件拷贝到服务器的目录下，在浏览器中访问index.html即可。
+1. 网页必须以HTTP协议访问，准备一个HTTP服务器，Windows推荐用WAMP，MacOS推荐用MAMP。
+2. 把整个工程文件拷贝到服务器的目录下，在浏览器中访问`index.html`即可。
 
 ## 3. 操作说明
 
 不停按方向键右即可。
 
 **如果切换了数据源，需要清空浏览器缓存再刷新。**
-
-## 更多配置
-
-封榜的时间默认是3600\*2s（距离比赛开始2小时，用的是一个热身赛的数据，整场比赛只有3小时），在`hiho-resolver.js` 最开头修改
