@@ -1,6 +1,6 @@
-acm-resover
-==================
-本项目fork自[hiho-resolver](https://github.com/hiho-coder/hiho-resolver)，用于ACM系列竞赛的滚榜。
+**[\[English Document\]](README.en.md)**
+
+本项目fork自[hiho-resolver](https://github.com/hiho-coder/hiho-resolver)，用于ICPC系列算法竞赛的滚榜。
 相比原项目，主要优化了动画效率，更改了界面配色，并丰富了文档。
 
 # 截图
