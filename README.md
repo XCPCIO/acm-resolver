@@ -30,7 +30,7 @@ exported_data:
 
 ![](./screenshots/resolver_tutorial.png)
 
-如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://resolver.xcpcio.com/>
+如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://acm-resolver.xcpcio.com/>
 
 ## Basic Tutorial
 
@@ -50,6 +50,8 @@ exported_data:
 不停按方向键右即可。
 
 **如果切换了数据源，需要清空浏览器缓存再刷新。**
+
+
 
 ## 更多配置
 
