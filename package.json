@@ -1,0 +1,11 @@
+{
+  "name": "acm-resolver",
+  "version": "1.0.0",
+  "description": "**[\\[中文文档\\]](README.md)**",
+  "main": "hiho-resolver.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
