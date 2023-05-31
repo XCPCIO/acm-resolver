@@ -29,6 +29,7 @@ pnpm run start
 预览地址：
 
 * <https://acm-resolver.xcpcio.com/>
+* <https://xcpcio.github.io/acm-resolver/>
 
 ### Operation
 

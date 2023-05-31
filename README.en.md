@@ -31,6 +31,7 @@ To see the demo, you can click on 「加载示例数据」.
 preview url:
 
 * <https://acm-resolver.xcpcio.com/>
+* <https://xcpcio.github.io/acm-resolver/>
 
 ### Operation
 
