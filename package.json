@@ -1,11 +1,17 @@
 {
-  "name": "acm-resolver",
-  "version": "1.0.0",
-  "description": "**[\\[中文文档\\]](README.md)**",
-  "main": "hiho-resolver.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "MIT"
+    "name": "acm-resolver",
+    "description": "acm resolver",
+    "license": "MIT",
+    "version": "1.0.0",
+    "packageManager": "pnpm@8.6.0",
+    "engines": {
+        "node": ">=16.11.0"
+    },
+    "scripts": {
+        "start": "superstatic serve . --port 8080"
+    },
+    "devDependencies": {
+        "pnpm": "^8.6.0",
+        "superstatic": "^9.0.3"
+    }
 }

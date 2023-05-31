@@ -11,6 +11,13 @@
 
 ## Tutorial
 
+### Start
+
+```bash
+pnpm install
+pnpm run start
+```
+
 ### Operation
 
 不停按方向键右即可。
@@ -89,6 +96,6 @@ exported_data:
 
 然后将 output/1 目录下的 resolver.json 中的内容，粘贴到下图中的输入框中，然后点击「加载数据」，记得先点一下「清空缓存」。
 
-![](./screenshots/resolver_domjudge_tutorial.png)
+![](./screenshots/resolver_tutorial_domjudge.png)
 
 如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://acm-resolver.xcpcio.com/>。
