@@ -4,7 +4,7 @@
 
 // Vuejs
 function vuejs() {
-      
+
     var RANKS_KEY = 'icpc-ranks';
     var OPER_FLAG_KEY = 'operation-flag';
 
@@ -32,7 +32,7 @@ function vuejs() {
             vm.$data.op_status = false;
             var op = vm.$data.operations[vm.$data.op_flag];
             var op_length = vm.$data.operations.length - 1;
-            
+
             if(vm.$data.op_flag < op_length) {
                 var op_next = vm.$data.operations[vm.$data.op_flag+1];
             }
@@ -48,7 +48,7 @@ function vuejs() {
             el_old
                 .find('.p-'+op.problem_index).addClass('uncover')
                 .find('.p-content').addClass('uncover');
-            
+
             if (op.new_rank == op.old_rank) {
                 if (vm.$data.op_flag < op_length) {
                     var el_old_next = $('#rank-' + op_next.old_rank);
@@ -63,7 +63,7 @@ function vuejs() {
 
                     rank_old.problem[op.problem_index].old_verdict = op.new_verdict;
                     rank_old.problem[op.problem_index].new_verdict = "NA";
-                    
+
                     //if(op.new_submissions > 0) {
                     if(op.new_verdict == 'AC'){
                         rank_old.problem[op.problem_index].old_submissions = op.new_submissions;
@@ -80,7 +80,7 @@ function vuejs() {
                             .find('.p-'+op.problem_index).addClass('uncover')
                             .find('.p-content').removeClass('uncover');
                     });
-                        
+
                     setTimeout(function() {
                         vm.selected(el_old, 'remove');
                         if(vm.$data.op_flag < op_length)
@@ -101,7 +101,7 @@ function vuejs() {
                 if (Math.abs(distance) > win_heigth) {
                     distance = -(win_heigth + 100);
                 }
-                
+
                 var j = op.old_rank - 1;
                 var el_obj = [];
 
@@ -125,7 +125,7 @@ function vuejs() {
 
                         rank_old.problem[op.problem_index].old_verdict = op.new_verdict;
                         rank_old.problem[op.problem_index].new_verdict = "NA";
-                        
+
                         //if(op.new_submissions > 0) {
                         if (op.new_verdict == 'AC') {
                             rank_old.problem[op.problem_index].old_submissions = op.new_submissions;
@@ -146,18 +146,18 @@ function vuejs() {
 
                             //修改排名
                             el_old.find('.rank').text(op.new_rank_show);
-                            el_obj.forEach(function(val,i){ 
+                            el_obj.forEach(function(val,i){
                                 var dom_rank = el_obj[i].find('.rank');
                                 var dom_rank_old = el_old.find('.rank');
                                 if (dom_rank.text() !== "*" && dom_rank_old.text() !== "*") {
                                     var new_rank_show = Number(dom_rank.text())+1;
                                     dom_rank.text(new_rank_show);
-                                    el_obj[i].rank_obj.rank_show = new_rank_show; 
+                                    el_obj[i].rank_obj.rank_show = new_rank_show;
                                 }
                             });
                         });
 
-                    setTimeout(function() { 
+                    setTimeout(function() {
                         el_old
                             .css('position', 'relative')
                             .animate({ top: distance+'px' }, ROLLING_TIME, function(){
@@ -192,7 +192,7 @@ function vuejs() {
                                 el_obj[i].css({'top': 106+'px'});
                             }
                         }
-                    }, FLAHING_TIME + 100); // two loop    
+                    }, FLAHING_TIME + 100); // two loop
                     // };
                 }, FLAHING_TIME);
             }
@@ -203,7 +203,7 @@ function vuejs() {
 
         }
     };
-    
+
     Vue.filter('toMinutes', function (value) {
         return parseInt(value/60);
     });
@@ -211,7 +211,7 @@ function vuejs() {
     Vue.filter('problemStatus', function (problem) {
         return resolver.status(problem);
     });
-    
+
     Vue.filter('submissions', function (problem) {
         var st = resolver.status(problem);
         if(st == 'ac')
@@ -220,7 +220,7 @@ function vuejs() {
             return problem.old_submissions + '+' + problem.frozen_submissions;
         else if(st == 'failed')
             return problem.old_submissions;
-        else 
+        else
             return String.fromCharCode("A".charCodeAt(0) + problem.problem_index);
         // TODO:
     });
@@ -257,7 +257,7 @@ function vuejs() {
 
         methods: {
             reset: function(){
-                if(confirm('确定要重置排名吗？')){    
+                if(confirm('确定要重置排名吗？')){
                     localStorage.clear();
                     window.location.reload();
                 }
@@ -280,7 +280,7 @@ function vuejs() {
             //         if (window.scrollY != next_scrollY) {
             //             window.scrollBy(0, -1);
             //         }
-            //         else clearInterval(scrollInterval); 
+            //         else clearInterval(scrollInterval);
             //     },30);
 
             // }
@@ -289,49 +289,71 @@ function vuejs() {
     });
 }
 
-function clear_cache() {
-    if (confirm('确定要清除缓存吗？')) { 
-        localStorage.clear();
-        window.location.reload();
+function isUrl(urlString) {
+    return /^https?:\/\/[^\s/$.?#].[^\s]*$/i.test(urlString);
+}
+
+function clearCache() {
+    localStorage.clear();
+    // window.location.reload();
+}
+
+function processData(data) {
+    $('title').text(data.contest_name);
+    $('#title').text(data.contest_name);
+
+    $('.footer').css("display", "none");
+
+    var resolver = new Resolver(data.solutions, data.users, data.problem_count, data.frozen_seconds);
+    window.resolver = resolver;
+    resolver.calcOperations();
+
+    vuejs();
+
+    // var el = $("#rank-0").position().top;
+    // alert(el);
+    // alert(window.scrollY);
+    // alert($(document).height());
+    // alert(document.body.clientHeight);
+
+    document.onkeydown = function(event){
+        var e = event || window.event || arguments.callee.caller.arguments[0];
+
+        if (e && e.keyCode == 37 /*&& vm.$data.op_status*/) { // key left
+            Operation.back();
+        }
+
+        if (e && e.keyCode == 39 && vm.$data.op_status) { // key right
+            Operation.next();
+        }
+    };
+}
+
+function loadData() {
+    clearCache();
+
+    const input = $('#input-data').val().trim();
+
+    if (isUrl(input)) {
+        console.log(`load data from json. [url=${input}]`);
+        $.getJSON(input, function(data) {
+            processData(data);
+        });
+    } else {
+        console.log(`load data from json content. [length=${input.length}]`)
+        const data = JSON.parse(input);
+        processData(data);
     }
 }
 
-function load_data() {
+function clearCacheNeedDoubleCheck() {
+    if (confirm("确定要清除缓存吗？")) {
+        clearCache();
+    }
+}
 
+function loadDataNeedDoubleCheck() {
     if (confirm('确定要加载数据吗？')) {
-        var data = JSON.parse($('#input-data').val());
-        
-        $('title').text(data.contest_name);
-        $('#title').text(data.contest_name);
-
-        $('.footer').css("display", "none");
-            
-        var resolver = new Resolver(data.solutions, data.users, data.problem_count, data.frozen_seconds);
-        window.resolver = resolver;
-        resolver.calcOperations();
-        
-        vuejs();
-    
-        // var el = $("#rank-0").position().top;
-        // alert(el);
-        // alert(window.scrollY);
-        // alert($(document).height());
-        // alert(document.body.clientHeight);
-    
-        document.onkeydown = function(event){
-            var e = event || window.event || arguments.callee.caller.arguments[0];
-            
-            if (e && e.keyCode == 37 /*&& vm.$data.op_status*/) { // key left
-                Operation.back();
-            }
-
-            if (e && e.keyCode == 39 && vm.$data.op_status) { // key right
-                Operation.next();
-            }
-        };
-
-        // $.getJSON("contest.json", function(data) {
-
-        // });
+        loadData();
     }
 }
