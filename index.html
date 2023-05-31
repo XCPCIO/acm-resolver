@@ -3,30 +3,34 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>The 2015 ACM-ICPC Asia Beijing Regional Contest</title>
+        <title>acm-resolver</title>
         <link type="text/css" rel="stylesheet" href="libs/style/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="libs/style/sticky-footer.css">
         <link type="text/css" rel="stylesheet" href="css/main.css">
     </head>
+
     <body class="app">
+
         <!-- top navbar -->
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">The 2015 ACM-ICPC Asia Beijing Regional Contest</a>
+                    <a class="navbar-brand" href="" id="title">
+                        acm-resolver
+                    </a>
                 </div>
-                <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
-                    <!-- <ul class="nav navbar-nav">
+                <!-- <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+                    <ul class="nav navbar-nav">
                         <li class="active"><a href="#">Home</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
-                    </ul> -->
-                </div><!--/.nav-collapse -->
+                    </ul>
+                </div> -->
             </div>
         </nav>
 
         <!-- page content -->
-        <div class="rank-list">
+        <div class="rank-list" style="display:none">
             <div id="rank-{{$index}}" class="rank-list-item clearfix" v-for="team in ranks" track-by="user_id">
                 <div class="rank">{{ team.rank_show }}</div>
                 <div class="content">
@@ -47,7 +51,18 @@
         <!-- sticky footer -->
         <footer class="footer">
             <div class="container clearfix">
-                <p class="text-muted pull-left"><button @click="reset">重置排名</button></p>
+                <p class="text-muted pull-left">
+                    <textarea id="input-data" cols="100" rows="1"></textarea>
+                </p>
+                <p class="text-muted pull-left" style="margin-left: 10px;">
+                    <button onclick="loadDataNeedDoubleCheck()">加载数据</button>
+                </p>
+                <p class="text-muted pull-left" style="margin-left: 10px;">
+                    <button onclick="loadExampleData()">加载示例数据</button>
+                </p>
+                <p class="text-muted pull-left" style="margin-left: 10px;">
+                    <button onclick="clearCacheNeedDoubleCheck()">清空缓存</button>
+                </p>
             </div>
         </footer>
 

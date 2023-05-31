@@ -1,8 +1,8 @@
-function Resolver(solutions, users, problem_count){
+function Resolver(solutions, users, problem_count, frozen_seconds){
 	this.solutions = solutions;
 	this.users = users;
 	this.problem_count = problem_count;
-	this.frozen_seconds = 3600*2;
+	this.frozen_seconds = frozen_seconds;
 	this.operations = [];
 }
 
@@ -29,6 +29,7 @@ Resolver.prototype.calcOperations = function() {
 			this.rank[sol.user_id].problem = {};
 			for(var i = 1; i <= this.problem_count; i++) {
 				this.rank[sol.user_id].problem[i] = {
+					'problem_index': i - 1,
 					'old_penalty':0,
 					'new_penalty':0,
 					'old_verdict':'NA',
