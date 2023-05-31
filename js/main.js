@@ -303,6 +303,7 @@ function processData(data) {
     $('#title').text(data.contest_name);
 
     $('.footer').css("display", "none");
+    $('.rank-list').css("display", "");
 
     var resolver = new Resolver(data.solutions, data.users, data.problem_count, data.frozen_seconds);
     window.resolver = resolver;

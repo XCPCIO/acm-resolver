@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>acm-resolver</title>
         <link type="text/css" rel="stylesheet" href="libs/style/bootstrap.min.css">
         <link type="text/css" rel="stylesheet" href="libs/style/sticky-footer.css">
         <link type="text/css" rel="stylesheet" href="css/main.css">
@@ -15,7 +15,9 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#" id="title"></a>
+                    <a class="navbar-brand" href="" id="title">
+                        acm-resolver
+                    </a>
                 </div>
                 <!-- <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav navbar-nav">
@@ -28,7 +30,7 @@
         </nav>
 
         <!-- page content -->
-        <div class="rank-list">
+        <div class="rank-list" style="display:none">
             <div id="rank-{{$index}}" class="rank-list-item clearfix" v-for="team in ranks" track-by="user_id">
                 <div class="rank">{{ team.rank_show }}</div>
                 <div class="content">
