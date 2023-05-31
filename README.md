@@ -18,11 +18,44 @@ pnpm install
 pnpm run start
 ```
 
+### Load Data
+
+![](screenshots/tutorial_load_data.png)
+
+在输入框中输入一个 url 地址，或者直接将整个 JSON 的内容粘贴在输入框中，然后点击「加载数据」。
+
+### Preview
+
+如果想看看效果，可以点击「加载实例数据」。
+
+预览地址：
+
+* <https://acm-resolver.xcpcio.com/>
+
 ### Operation
 
 不停按方向键右即可。
 
 **如果切换了数据源，需要清空浏览器缓存再刷新。**
+
+### DOMjudge
+
+可以使用 [Dup4/domjudge-utility](https://github.com/Dup4/domjudge-utility/tree/main/cmd/dump) 将 DOMjudge 中的数据导出成 acm-resolver 所需要的数据格式。
+
+dump 的配置参考：
+
+```yaml
+base_url: "https://localhost/domjudge/"
+userpwd: "username:password"
+
+cid: 1
+saved_dir: "./output/1"
+
+exported_data:
+  resolver_data: true
+```
+
+然后参考 [Load Data](#Load-Data) 将数据加载进去。
 
 ## JSON Configuration Format
 
@@ -76,26 +109,3 @@ user 的格式，其中 key 即为 user 的 id，要和 solution 中对上：
     }
 }
 ```
-
-### DOMjudge
-
-可以使用 [Dup4/domjudge-utility](https://github.com/Dup4/domjudge-utility/tree/main/cmd/dump) 将 DOMjudge 中的数据导出成 acm-resolver 所需要的数据格式。
-
-dump 的配置参考：
-
-```yaml
-base_url: "https://localhost/domjudge/"
-userpwd: "username:password"
-
-cid: 1
-saved_dir: "./output/1"
-
-exported_data:
-  resolver_data: true
-```
-
-然后将 output/1 目录下的 resolver.json 中的内容，粘贴到下图中的输入框中，然后点击「加载数据」，记得先点一下「清空缓存」。
-
-![](./screenshots/resolver_tutorial_domjudge.png)
-
-如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://acm-resolver.xcpcio.com/>。
