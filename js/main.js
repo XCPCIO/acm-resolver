@@ -335,7 +335,7 @@ function loadData() {
     const input = $('#input-data').val().trim();
 
     if (isUrl(input)) {
-        console.log(`load data from json. [url=${input}]`);
+        console.log(`load data from url. [url=${input}]`);
         $.getJSON(input, function(data) {
             processData(data);
         });
@@ -355,5 +355,17 @@ function clearCacheNeedDoubleCheck() {
 function loadDataNeedDoubleCheck() {
     if (confirm('确定要加载数据吗？')) {
         loadData();
+    }
+}
+
+function loadExampleData() {
+    if (confirm('确定要加载示例数据吗？')) {
+        const url = `${window.location.href}/data/2023_zjcpc_warmup_resolver.json`;
+
+        console.log(`load data from url. [url=${url}]`);
+
+        $.getJSON(url, function(data) {
+            processData(data);
+        });
     }
 }
