@@ -91,4 +91,4 @@ exported_data:
 
 ![](./screenshots/resolver_domjudge_tutorial.png)
 
-如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://acm-resolver.xcpcio.com/>
+如果不想自己搭建 http 服务器来跑 acm-resolver，可以直接使用 <https://acm-resolver.xcpcio.com/>。
