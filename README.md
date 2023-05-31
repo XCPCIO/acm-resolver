@@ -37,7 +37,7 @@ pnpm run start
 
 ### DOMjudge
 
-可以使用 [Dup4/domjudge-utility](https://github.com/Dup4/domjudge-utility/tree/main/cmd/dump) 将 DOMjudge 中的数据导出成 acm-resolver 所需要的数据格式。
+可以使用 [XCPCIO/domjudge-utility](https://github.com/XCPCIO/domjudge-utility/tree/main/cmd/dump) 将 DOMjudge 中的数据导出成 acm-resolver 所需要的数据格式。
 
 dump 的配置参考：
 

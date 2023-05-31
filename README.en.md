@@ -39,7 +39,7 @@ Just keep pushing the right-arrow key.
 
 ### DOMjudge
 
-You can use [Dup4/domjudge-utility](https://github.com/Dup4/domjudge-utility/tree/main/cmd/dump) to export the data in DOMjudge to the data format required by acm-resolver.
+You can use [XCPCIO/domjudge-utility](https://github.com/XCPCIO/domjudge-utility/tree/main/cmd/dump) to export the data in DOMjudge to the data format required by acm-resolver.
 
 Configuration reference for `dump`:
 
