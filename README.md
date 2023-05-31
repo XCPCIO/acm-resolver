@@ -1,17 +1,15 @@
 # acm-resolver
 
+**[\[English Document\]](README.en.md)**
+
 本项目 fork 自 [hiho-resolver](https://github.com/hiho-coder/hiho-resolver)，用于 ACM 系列竞赛的滚榜。
 相比原项目，主要优化了动画效率，更改了界面配色，并丰富了文档。
-
-**[\[English Document\]](README.en.md)**
 
 ## Screenshot
 
 ![screenshot](screenshots/shot1.gif)
 
-## Tutorial
-
-### Start
+## Quick Start
 
 ```bash
 pnpm install
@@ -26,7 +24,7 @@ pnpm run start
 
 ### Preview
 
-如果想看看效果，可以点击「加载实例数据」。
+如果想看看效果，可以点击「加载示例数据」。
 
 预览地址：
 
@@ -35,8 +33,6 @@ pnpm run start
 ### Operation
 
 不停按方向键右即可。
-
-**如果切换了数据源，需要清空浏览器缓存再刷新。**
 
 ### DOMjudge
 
@@ -69,7 +65,7 @@ exported_data:
 }
 ```
 
-solution 的格式，key 可以任意，problem 下标从 1 开始:
+`solution` 的格式，key 可以任意，problem 下标从 1 开始:
 
 ```json
 {
@@ -88,7 +84,7 @@ solution 的格式，key 可以任意，problem 下标从 1 开始:
 }
 ```
 
-user 的格式，其中 key 即为 user 的 id，要和 solution 中对上：
+`user` 的格式，其中 key 即为 user 的 id，要和 solution 中对上：
 
 ```json
 {

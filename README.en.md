@@ -1,3 +1,5 @@
+# acm-resolver
+
 **[\[中文文档\]](README.md)**
 
 Forked from [hiho-resolver](https://github.com/hiho-coder/hiho-resolver).
@@ -5,88 +7,103 @@ Did some performance optimization, changed the color scheme and added a lot of d
 
 It's used for visualizing the final hidden stage(aka frozen time) in the competitive programming contest.
 
-# Screenshot
+## Screenshot
 
 ![screenshot](screenshots/shot1.gif)
 
-# Quick Start
+## Quick Start
 
-## 1. Prepare Data
-
-The code of reading data is the end of `js/main.js`, `$.getJSON("contest.json", function(data){..})`
-
-It reads the `contest.json` in the root folder by default.
-
-### JSON Format
-
-```
-{
-  problem_count: 10,
-  solutions: {... },
-  users: {... }
-}
+```bash
+pnpm install
+pnpm run start
 ```
 
-For solution's format，you can use arbitrary keys，problem is indexed from 1.
+### Load Data
 
-```
-381503: {
-  user_id: "1",
-  problem_index: "1",
-  verdict: "AC",
-  submitted_seconds: 22
-},
-381504: {
-  user_id: "2",
-  problem_index: "1",
-  verdict: "WA",
-  submitted_seconds: 23
-},
-```
+![](screenshots/tutorial_load_data.png)
 
-For user's format，the key is `user_id`，should be matched with what in solutions：
+Enter a url address in the input box or paste the entire JSON content directly into the input box and click 「加载数据」.
 
-```
-1: {
-  name: "TEAM1",
-  college: "HZNU",
-  is_exclude: true
-},
-2: {
-  name: "TEAM2",
-  college: "HDU",
-  is_exclude: false
-},
-3: {
-  name: "TEAM3",
-  college: "PKU",
-  is_exclude: true
-},
-```
+### Preview
 
-## 2. Frozen Time Configuration
+To see the demo, you can click on 「加载示例数据」.
 
-The frozen time is 3600\*2s by default (2 hours before the contest ends. The default data is a warming-up contest which only last 3 hours).
-You can change this in the begging of `hiho-resolver.js`.
+preview url:
 
-```javascript
-function Resolver(solutions, users, problem_count){
-	this.solutions = solutions;
-	this.users = users;
-	this.problem_count = problem_count;
-	this.frozen_seconds = 3600*2; // HERE!
-	this.operations = [];
-}
-```
+* <https://acm-resolver.xcpcio.com/>
 
-## 2. Prepare a Web Server
-
-1. The page must be visited using HTTP protocol. So you should prepare a web server.
-2. Put this project in the root path of your web server. And visit `index.html`.
-
-## 3. Run It
+### Operation
 
 Just keep pushing the right-arrow key.
 
-**If you changed the input data. Please clear the browser cache and refresh the page.**
+### DOMjudge
 
+You can use [Dup4/domjudge-utility](https://github.com/Dup4/domjudge-utility/tree/main/cmd/dump) to export the data in DOMjudge to the data format required by acm-resolver.
+
+Configuration reference for `dump`:
+
+```yaml
+base_url: "https://localhost/domjudge/"
+userpwd: "username:password"
+
+cid: 1
+saved_dir: "./output/1"
+
+exported_data:
+  resolver_data: true
+```
+
+Then refer to [Load Data](#Load-Data) to load the data in.
+
+## JSON Configuration Format
+
+```json
+{
+    "contest_name": "your contest name",
+    "problem_count": 13,
+    "frozen_seconds": 3600,
+    "solutions": {},
+    "users": {}
+}
+```
+
+The format of the `solution`, the key can be arbitrary and the problem subscript starts from 1.
+
+```json
+{
+    "381503": {
+        "user_id": "1",
+        "problem_index": "1",
+        "verdict": "AC",
+        "submitted_seconds": 22
+    },
+    "381504": {
+        "user_id": "2",
+        "problem_index": "1",
+        "verdict": "WA",
+        "submitted_seconds": 23
+    }
+}
+```
+
+The format of the `user`, where the key is the id of the user, should be matched to the solution:
+
+```json
+{
+    "1": {
+        "name": "花落人亡两不知",
+        "college": "HZNU",
+        "is_exclude": true
+    },
+    "2": {
+        "name": "大斌丶凸(♯｀∧´)凸",
+        "college": "HDU",
+        "is_exclude": false
+    },
+    "3": {
+        "name": "天才少女队",
+        "college": "PKU",
+        "is_exclude": true
+    }
+}
+```
